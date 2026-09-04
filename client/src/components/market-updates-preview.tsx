@@ -51,7 +51,7 @@ export default function MarketUpdatesPreview() {
               <Link key={post._id} href={`/market-updates/${post.slug.current}`}>
                 <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer h-full">
                   {imageUrl && (
-                    <img src={imageUrl} alt={post.title} className="w-full h-44 object-cover" />
+                    <img src={imageUrl} alt={post.title} className="w-full h-44 object-cover" loading="lazy" decoding="async" />
                   )}
                   <CardContent className="p-6">
                     <p className="text-sm text-medium-blue font-medium mb-2">

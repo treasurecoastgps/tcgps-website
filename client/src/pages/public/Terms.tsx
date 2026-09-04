@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'wouter';
+import Seo from '@/components/Seo';
 
 export default function Terms() {
   return (
     <div className="py-20">
+      <Seo
+        title="Terms of Service"
+        description="Terms of Service for Treasure Coast Global Property Solutions."
+        path="/terms"
+      />
+
       <div className="container mx-auto px-4 max-w-3xl">
         <h1 className="text-4xl font-bold text-navy mb-2">Terms of Service</h1>
         <p className="text-gray-500 mb-12">Last updated: September 2, 2026</p>
@@ -13,7 +20,7 @@ export default function Terms() {
             <h2 className="text-2xl font-bold text-navy mb-3">1. Acceptance of Terms</h2>
             <p>
               These Terms of Service ("Terms") govern your access to and use of
-              treasurecoastglobal.com (the "Site"), operated by Treasure Coast Global Property
+              treasurecoastgps.com (the "Site"), operated by Treasure Coast Global Property
               Solutions LLC ("Company," "we," "us"). By using the Site, you agree to these Terms. If
               you do not agree, do not use the Site.
             </p>

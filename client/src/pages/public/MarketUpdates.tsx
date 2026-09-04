@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent } from '@/components/ui/card';
 import { sanityClient, urlForImage } from '@/lib/sanity';
+import Seo from '@/components/Seo';
 
 interface SanityMarketUpdate {
   _id: string;
@@ -29,6 +30,12 @@ export default function MarketUpdates() {
 
   return (
     <div className="py-20">
+      <Seo
+        title="Market Updates"
+        description="News, market insights, and updates from the Treasure Coast Global Property Solutions team."
+        path="/market-updates"
+      />
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-navy mb-6">Market Updates</h1>
@@ -71,7 +78,7 @@ export default function MarketUpdates() {
                 <Link key={post._id} href={`/market-updates/${post.slug.current}`}>
                   <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer h-full">
                     {imageUrl && (
-                      <img src={imageUrl} alt={post.title} className="w-full h-48 object-cover" />
+                      <img src={imageUrl} alt={post.title} className="w-full h-48 object-cover" loading="lazy" decoding="async" />
                     )}
                     <CardContent className="p-6">
                       <p className="text-sm text-medium-blue font-medium mb-2">

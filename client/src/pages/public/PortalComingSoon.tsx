@@ -1,11 +1,23 @@
 import React from 'react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Clock, ArrowRight } from 'lucide-react';
+import Seo from '@/components/Seo';
 
 export default function PortalComingSoon() {
+  // Rendered at multiple URLs (/login, /register, /app/*) — noindex so none of these
+  // placeholder duplicates get indexed, and use the real current path for canonical/og:url.
+  const [location] = useLocation();
+
   return (
     <div className="py-24 min-h-[70vh] flex items-center bg-light-blue">
+      <Seo
+        title="Investor Portal — Coming Soon"
+        description="The Treasure Coast Global Property Solutions investor portal is coming soon."
+        path={location}
+        noindex
+      />
+
       <div className="container mx-auto px-4 max-w-xl text-center">
         <div className="w-16 h-16 bg-sky-blue/10 rounded-full flex items-center justify-center mx-auto mb-6">
           <Clock className="h-8 w-8 text-sky-blue" />

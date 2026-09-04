@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { sanityClient, urlForImage } from '@/lib/sanity';
+import Seo from '@/components/Seo';
 
 // NOTE: This is the PUBLIC portfolio showcase. Per compliance guidance (Reg D Rule 506(b)
 // prohibits general solicitation), deal-specific financials — target returns, raise totals,
@@ -51,6 +52,12 @@ export default function Properties() {
 
   return (
     <div className="py-20">
+      <Seo
+        title="Our Portfolio"
+        description="A general overview of Treasure Coast Global Property Solutions' real estate portfolio across Florida's Treasure Coast region."
+        path="/properties"
+      />
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-navy mb-6">Our Portfolio</h1>
@@ -97,6 +104,8 @@ export default function Properties() {
                     src={imageUrl}
                     alt={property.name}
                     className="w-full h-48 object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between mb-2">

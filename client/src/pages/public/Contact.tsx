@@ -9,6 +9,7 @@ import { Mail, Phone, MapPin, Clock, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest } from '@/lib/queryClient';
 import type { InsertContactSubmission } from '@shared/schema';
+import Seo from '@/components/Seo';
 
 export default function Contact() {
   const { toast } = useToast();
@@ -66,6 +67,12 @@ export default function Contact() {
 
   return (
     <div className="py-20 bg-light-blue">
+      <Seo
+        title="Contact Us"
+        description="Get in touch with Treasure Coast Global Property Solutions. Contact our team with questions about real estate investing in Florida's Treasure Coast region."
+        path="/contact"
+      />
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-navy mb-6">Contact Us</h1>

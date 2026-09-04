@@ -1,8 +1,15 @@
 import React from 'react';
+import Seo from '@/components/Seo';
 
 export default function Privacy() {
   return (
     <div className="py-20">
+      <Seo
+        title="Privacy Policy"
+        description="Privacy Policy for Treasure Coast Global Property Solutions."
+        path="/privacy"
+      />
+
       <div className="container mx-auto px-4 max-w-3xl">
         <h1 className="text-4xl font-bold text-navy mb-2">Privacy Policy</h1>
         <p className="text-gray-500 mb-12">Last updated: September 2, 2026</p>
@@ -13,7 +20,7 @@ export default function Privacy() {
             <p>
               Treasure Coast Global Property Solutions LLC ("Company," "we," "us," or "our") respects
               your privacy. This Privacy Policy explains what information we collect through
-              treasurecoastglobal.com (the "Site"), how we use it, and the choices available to you.
+              treasurecoastgps.com (the "Site"), how we use it, and the choices available to you.
               This policy covers the public marketing Site only. Separate, more detailed disclosures
               govern information collected during investor onboarding, identity verification, and the
               investor portal once an individual becomes an approved investor.

@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Link } from 'wouter';
+import Seo from '@/components/Seo';
 
 const faqs = [
   {
@@ -40,9 +41,29 @@ const faqs = [
   }
 ];
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function HowItWorks() {
   return (
     <div>
+      <Seo
+        title="How It Works"
+        description="Get started with professional real estate investing in four simple steps. Learn about our investment process, documentation, funding, and frequently asked questions."
+        path="/how-it-works"
+        jsonLd={faqJsonLd}
+      />
+
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">

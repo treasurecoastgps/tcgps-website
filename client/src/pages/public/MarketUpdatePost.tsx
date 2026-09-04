@@ -4,6 +4,8 @@ import { useQuery } from '@tanstack/react-query';
 import { PortableText, type PortableTextComponents } from '@portabletext/react';
 import { ArrowLeft } from 'lucide-react';
 import { sanityClient, urlForImage } from '@/lib/sanity';
+import Seo from '@/components/Seo';
+import { SITE_NAME, absoluteUrl } from '@/lib/seo';
 
 interface SanityMarketUpdatePost {
   _id: string;
@@ -44,8 +46,44 @@ export default function MarketUpdatePost() {
     ? urlForImage(post.coverImage).width(1200).height(630).fit('crop').url()
     : null;
 
+  const articleJsonLd = post
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: post.title,
+        description: post.excerpt || post.title,
+        datePublished: post.publishedAt,
+        ...(post.authorName ? { author: { '@type': 'Person', name: post.authorName } } : {}),
+        ...(coverUrl ? { image: [coverUrl] } : {}),
+        publisher: { '@type': 'Organization', name: SITE_NAME },
+        mainEntityOfPage: absoluteUrl(`/market-updates/${slug}`),
+      }
+    : undefined;
+
+  const breadcrumbJsonLd = post
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
+          { '@type': 'ListItem', position: 2, name: 'Market Updates', item: absoluteUrl('/market-updates') },
+          { '@type': 'ListItem', position: 3, name: post.title, item: absoluteUrl(`/market-updates/${slug}`) },
+        ],
+      }
+    : undefined;
+
   return (
     <div className="py-20">
+      <Seo
+        title={post ? post.title : 'Market Updates'}
+        description={post ? (post.excerpt || post.title) : 'Market update from Treasure Coast Global Property Solutions.'}
+        path={`/market-updates/${slug}`}
+        image={coverUrl || undefined}
+        type="article"
+        noindex={!isLoading && !post}
+        jsonLd={post ? [articleJsonLd!, breadcrumbJsonLd!] : undefined}
+      />
+
       <div className="container mx-auto px-4 max-w-3xl">
         <Link href="/market-updates" className="inline-flex items-center text-medium-blue hover:text-sky-blue mb-8">
           <ArrowLeft className="h-4 w-4 mr-2" /> Back to Market Updates

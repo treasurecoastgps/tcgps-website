@@ -4,26 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 
+    <!--
+      description/canonical/og:*/twitter:* below carry data-rh="true" so that once
+      react-helmet-async mounts, it recognizes these as tags it already owns (from a
+      prior "render") and REPLACES them per-page instead of appending duplicates
+      alongside them — see client/src/components/Seo.tsx. Don't remove data-rh from
+      these; that's what stops every page showing two conflicting <meta description>
+      and <link canonical> tags. These static values also serve as the real fallback
+      seen by crawlers that never execute JavaScript at all (most AI answer-engine
+      bots), so keep them accurate for the homepage specifically.
+    -->
     <title>Treasure Coast Global Property Solutions | Real Estate Investing Group</title>
-    <meta name="description" content="Treasure Coast Global Property Solutions is a Florida-based real estate investment group offering strategic property investment opportunities across the Treasure Coast region." />
-    <link rel="canonical" href="https://www.treasurecoastglobal.com/" />
+    <meta data-rh="true" name="description" content="Treasure Coast Global Property Solutions is a Florida-based real estate investment group offering strategic property investment opportunities across the Treasure Coast region." />
+    <link data-rh="true" rel="canonical" href="https://treasurecoastgps.com/" />
 
     <link rel="icon" type="image/png" sizes="256x256" href="/favicon-256.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#002B5B" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Treasure Coast Global Property Solutions" />
-    <meta property="og:title" content="Treasure Coast Global Property Solutions | Real Estate Investing Group" />
-    <meta property="og:description" content="Strategic real estate investment opportunities across Florida's Treasure Coast. Professional management, transparent reporting, investor-first approach." />
-    <meta property="og:image" content="https://www.treasurecoastglobal.com/og-image.png" />
-    <meta property="og:url" content="https://www.treasurecoastglobal.com/" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="Treasure Coast Global Property Solutions" />
+    <meta data-rh="true" property="og:title" content="Treasure Coast Global Property Solutions | Real Estate Investing Group" />
+    <meta data-rh="true" property="og:description" content="Strategic real estate investment opportunities across Florida's Treasure Coast. Professional management, transparent reporting, investor-first approach." />
+    <meta data-rh="true" property="og:image" content="https://treasurecoastgps.com/og-image.png" />
+    <meta data-rh="true" property="og:url" content="https://treasurecoastgps.com/" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Treasure Coast Global Property Solutions" />
-    <meta name="twitter:description" content="Strategic real estate investment opportunities across Florida's Treasure Coast." />
-    <meta name="twitter:image" content="https://www.treasurecoastglobal.com/og-image.png" />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="Treasure Coast Global Property Solutions" />
+    <meta data-rh="true" name="twitter:description" content="Strategic real estate investment opportunities across Florida's Treasure Coast." />
+    <meta data-rh="true" name="twitter:image" content="https://treasurecoastgps.com/og-image.png" />
+
+    <!--
+      Sitewide Organization structured data — deliberately static HTML (not injected by
+      JS) so it's visible to crawlers that don't execute JavaScript, including most AI
+      answer-engine bots (PerplexityBot, GPTBot, ClaudeBot, etc.). Keep this block in
+      sync with the contact details shown on /contact and in the site footer.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Treasure Coast Global Property Solutions",
+        "url": "https://treasurecoastgps.com/",
+        "logo": "https://treasurecoastgps.com/favicon-256.png",
+        "email": "info@treasurecoastglobal.com",
+        "telephone": "+1-772-555-0123",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1650 S Kanner Hwy Ste 313",
+          "addressLocality": "Stuart",
+          "addressRegion": "FL",
+          "postalCode": "34994",
+          "addressCountry": "US"
+        },
+        "description": "Florida-based real estate investment group offering strategic property investment opportunities across the Treasure Coast region."
+      }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

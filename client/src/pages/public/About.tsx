@@ -2,10 +2,17 @@ import React from 'react';
 import { Users, MapPin, Award, Target } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import TeamSection from '@/components/TeamSection';
+import Seo from '@/components/Seo';
 
 export default function About() {
   return (
     <div className="py-20">
+      <Seo
+        title="About Us"
+        description="Treasure Coast Global Property Solutions specializes in high-quality real estate investments throughout Florida's Treasure Coast region. Learn our mission, approach, and meet our leadership team."
+        path="/about"
+      />
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-navy mb-6">About Treasure Coast Global Property Solutions</h1>

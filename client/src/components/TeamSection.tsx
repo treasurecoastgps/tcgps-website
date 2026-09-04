@@ -62,6 +62,8 @@ export default function TeamSection() {
               src={headshotUrl}
               alt={`Professional headshot of ${member.name}`}
               className="w-48 h-48 rounded-full mx-auto mb-4 object-cover shadow-lg"
+              loading="lazy"
+              decoding="async"
             />
             <h3 className="text-xl font-bold text-navy mb-1">{member.name}</h3>
             <p className="text-sky-blue font-semibold mb-3">{member.title}</p>

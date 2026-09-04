@@ -5,4 +5,27 @@ Disallow: /ops/
 Disallow: /login
 Disallow: /register
 
-Sitemap: https://www.treasurecoastglobal.com/sitemap.xml
+# Explicitly allowed AI answer-engine / AI-training crawlers — the intent is maximum
+# visibility for AI search/summary tools (Perplexity, ChatGPT, Google AI Overviews,
+# Claude, etc.). No user-agent is blocked above, so these lines aren't functionally
+# necessary, but they document that this is intentional and prevent a future edit
+# from accidentally blocking them by adding a stricter default rule.
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://treasurecoastgps.com/sitemap.xml

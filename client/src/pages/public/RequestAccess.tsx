@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { apiRequest } from '@/lib/queryClient';
 import type { InsertContactSubmission } from '@shared/schema';
 import { CheckCircle2, Loader2, ShieldCheck } from 'lucide-react';
+import Seo from '@/components/Seo';
 
 const INVESTMENT_RANGES = [
   '$1,000 - $10,000',
@@ -90,6 +91,12 @@ export default function RequestAccess() {
 
   return (
     <div className="py-20 bg-light-blue">
+      <Seo
+        title="Request Investor Access"
+        description="Request invitation-only investor access to Treasure Coast Global Property Solutions' real estate investment opportunities."
+        path="/request-access"
+      />
+
       <div className="container mx-auto px-4 max-w-2xl">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-navy mb-4">Request Investor Access</h1>

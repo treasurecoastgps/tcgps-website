@@ -1,8 +1,15 @@
 import React from 'react';
+import Seo from '@/components/Seo';
 
 export default function RiskDisclaimer() {
   return (
     <div className="py-20">
+      <Seo
+        title="Investment Risk Disclaimer"
+        description="Investment Risk Disclaimer for Treasure Coast Global Property Solutions."
+        path="/disclaimer"
+      />
+
       <div className="container mx-auto px-4 max-w-3xl">
         <h1 className="text-4xl font-bold text-navy mb-2">Investment Risk Disclaimer</h1>
         <p className="text-gray-500 mb-12">Last updated: September 2, 2026</p>

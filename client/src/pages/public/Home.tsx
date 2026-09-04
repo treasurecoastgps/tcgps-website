@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Events from "@/components/events";
 import MarketUpdatesPreview from "@/components/market-updates-preview";
+import Seo from "@/components/Seo";
 import heroImage from "@assets/tcgps-hero.jpg";
 
 export default function Home() {
@@ -22,6 +23,12 @@ export default function Home() {
 
   return (
     <div>
+      <Seo
+        title="Treasure Coast Global Property Solutions"
+        description="Florida real estate investment group offering strategic property investment opportunities across the Treasure Coast region. Professional management, quarterly distributions, transparent reporting."
+        path="/"
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}

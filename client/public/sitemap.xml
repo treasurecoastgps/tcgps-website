@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.treasurecoastglobal.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.treasurecoastglobal.com/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.treasurecoastglobal.com/how-it-works</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.treasurecoastglobal.com/properties</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.treasurecoastglobal.com/market-updates</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.treasurecoastglobal.com/contact</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.treasurecoastglobal.com/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://www.treasurecoastglobal.com/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://www.treasurecoastglobal.com/disclaimer</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://treasurecoastgps.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://treasurecoastgps.com/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://treasurecoastgps.com/how-it-works</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://treasurecoastgps.com/properties</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://treasurecoastgps.com/market-updates</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://treasurecoastgps.com/contact</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://treasurecoastgps.com/request-access</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://treasurecoastgps.com/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://treasurecoastgps.com/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://treasurecoastgps.com/disclaimer</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
