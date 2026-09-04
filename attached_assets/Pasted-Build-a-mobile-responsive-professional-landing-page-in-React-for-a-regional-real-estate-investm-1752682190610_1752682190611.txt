@@ -1,0 +1,74 @@
+Build a mobile-responsive, professional landing page in **React** for a regional real estate investment trust (REIT) called:
+
+**Treasure Coast Real Estate Investing Group**  
+Est. 2024
+
+Use the uploaded logo as the official brand identity. The design should target **high-income investors** and present the group as a serious, trustworthy, and forward-thinking real estate investment firm.
+
+🎨 **Design Requirements**:
+- Use the brand color scheme extracted from the logo:
+  - Navy Blue: #002B5B
+  - Sky Blue: #00AEEF
+  - Medium Blue: #1B75BC
+  - White: #FFFFFF
+  - Light Gray/Blue: #EAF6FB
+  - Green Accent: #2CA85C
+- Modern, elegant typography and spacious layout
+- Large full-width hero section with layered skyline effect (match energy of commercial real estate firms)
+
+🧱 **Landing Page Structure**:
+
+1. **Hero Section** (Top of Page)
+   - Background image of high-end real estate or stylized skyline (use placeholder)
+   - Overlay text:
+     - “Treasure Coast Real Estate Investing Group”
+     - Subheading: “Regional REIT | Strategic Growth | Passive Income”
+     - Buttons: [Become an Investor] [Learn More]
+
+2. **About the REIT Section**
+   - Mission Statement:
+     - “Empowering communities through strategic investments, our mission is to cultivate prosperous opportunities and sustainable growth in the real estate landscape.”
+   - Brief explanation of what a REIT is and how it works (from the uploaded presentation)
+   - Use clean icons or infographics to summarize:
+     - Passive income
+     - Long-term strategy
+     - Community impact
+     - Shareholder dividends (90% payout)
+
+3. **Showcase of Properties**
+   - Grid or carousel layout to showcase sample real estate holdings
+   - Include property name, location, asset type (residential, commercial, etc.)
+   - Use placeholder images that can be swapped later
+
+4. **Upcoming Events**
+   - Display cards for investor meetings, onboarding sessions, or community events
+   - Include placeholders for: Title, Date, Time, RSVP link/button
+
+5. **Contact Section**
+   - Form fields: Name, Email, Message
+   - Also include:
+     - Social media icons (link to Facebook page)
+     - Contact email + phone (use placeholder)
+
+6. **Team Preview Section**
+   - Optional: 3–4 cards for key team members (e.g., Quinesha “Nikki” Hawkins, Keisha McCarden)
+   - Include name, title, brief description, and headshot placeholder
+
+7. **Call to Action Footer**
+   - Reinforce invitation to invest or join the board
+   - “Join the Movement. Invest in the Future of Florida Real Estate.”
+   - Footer links: About | Events | Contact | Facebook
+
+📱 **Mobile Responsiveness**
+- Responsive layout for all devices
+- Collapsible hamburger menu for navigation
+- Touch-friendly forms and buttons
+
+🛠️ **Technical Specs**:
+- React functional components
+- Styled using CSS Modules or styled-components
+- Use React Router for internal navigation (if needed)
+- Use modular component structure for reusability
+- Assume placeholder images and data will be updated later
+
+Include all styles and assets necessary for deployment. Use the uploaded logo prominently throughout the design and ensure the site evokes professionalism, trust, and upward mobility for potential investors.

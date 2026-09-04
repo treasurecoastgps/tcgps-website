@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Investor Platform — Project Document</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: #7a6330;
+    --dark: #0d1410;
+    --panel: #111a14;
+    --border: #1e2e21;
+    --border-light: #2a3e2d;
+    --cream: #ede9e0;
+    --cream-dim: #9a9488;
+    --green-acc: #2a7a4a;
+    --blue: #4c8ac9;
+    --teal: #4cc9c9;
+    --red: #c94c4c;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --mono: 'DM Mono', 'Courier New', monospace;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--dark);
+    color: var(--cream);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  /* ── Cover ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 100px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .cover-title {
+    font-family: var(--serif);
+    font-size: 64px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .cover-title strong { font-weight: 700; color: var(--gold); }
+  .cover-subtitle {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--cream-dim);
+    margin-bottom: 60px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item span {
+    font-size: 14px;
+    color: var(--cream-dim);
+  }
+  .cover-rule {
+    width: 80px; height: 1px;
+    background: var(--gold);
+    margin: 40px 0;
+    opacity: 0.5;
+  }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 80px 60px; }
+  .page-break { page-break-before: always; border-top: 1px solid var(--border); margin-top: 80px; padding-top: 80px; }
+
+  /* ── Section headers ── */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 32px;
+    line-height: 1.1;
+  }
+  h3 {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--cream);
+    margin: 40px 0 16px;
+  }
+  h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 28px 0 12px;
+  }
+  p { color: var(--cream-dim); margin-bottom: 16px; line-height: 1.8; }
+  p strong { color: var(--cream); font-weight: 600; }
+
+  /* ── Callout boxes ── */
+  .callout {
+    padding: 20px 24px;
+    border-radius: 6px;
+    margin: 24px 0;
+    border-left: 3px solid;
+  }
+  .callout.gold { background: rgba(201,168,76,0.07); border-color: var(--gold); }
+  .callout.blue { background: rgba(76,138,201,0.07); border-color: var(--blue); }
+  .callout.red  { background: rgba(201,76,76,0.07);  border-color: var(--red);  }
+  .callout.teal { background: rgba(76,201,201,0.07); border-color: var(--teal); }
+  .callout-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .callout.gold .callout-title { color: var(--gold); }
+  .callout.blue .callout-title { color: var(--blue); }
+  .callout.red  .callout-title { color: var(--red);  }
+  .callout.teal .callout-title { color: var(--teal); }
+  .callout p { margin: 0; font-size: 13px; }
+
+  /* ── Stack table ── */
+  .stack-table { width: 100%; border-collapse: collapse; margin: 20px 0 32px; }
+  .stack-table th {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gold-dim);
+  }
+  .stack-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    vertical-align: top;
+  }
+  .stack-table tr:last-child td { border-bottom: none; }
+  .stack-table td:first-child { color: var(--cream); font-family: var(--mono); font-size: 12px; width: 200px; }
+  .stack-table td:nth-child(2) { color: var(--cream-dim); }
+  .stack-table td:last-child  { color: var(--gold-dim); font-family: var(--mono); font-size: 11px; }
+  .stack-table .cat-row td {
+    background: rgba(201,168,76,0.05);
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+  }
+  .stack-table .future td { opacity: 0.5; }
+
+  /* ── Phase cards ── */
+  .phase-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: var(--panel);
+  }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .phase-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 300;
+    opacity: 0.4;
+    line-height: 1;
+    min-width: 44px;
+  }
+  .phase-meta { flex: 1; }
+  .phase-title { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--cream); }
+  .phase-weeks { font-family: var(--mono); font-size: 11px; color: var(--cream-dim); margin-top: 2px; }
+  .phase-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.1em;
+  }
+  .phase-body { padding: 20px 24px; }
+  .phase-goal {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--cream-dim);
+    margin-bottom: 16px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 4px;
+  }
+  .phase-goal span { color: var(--gold); }
+  .task-list { list-style: none; padding: 0; }
+  .task-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--cream-dim);
+    line-height: 1.5;
+  }
+  .task-list li:last-child { border-bottom: none; }
+  .task-list li::before {
+    content: '—';
+    color: var(--gold-dim);
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-top: 2px;
+  }
+  .deliverable-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(42,122,74,0.08);
+    border: 1px solid rgba(42,122,74,0.25);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--cream);
+  }
+  .deliverable-row .dlabel {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: #4cc97a;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 1px;
+  }
+
+  /* ── Checklist ── */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--cream-dim);
+    line-height: 1.5;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-box {
+    width: 18px; height: 18px;
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .check-box.done { background: var(--green-acc); border-color: var(--green-acc); }
+  .check-box.warn { border-color: var(--gold); }
+  .checklist li.priority { color: var(--cream); }
+  .checklist li.defer  { opacity: 0.5; }
+  .priority-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+    letter-spacing: 0.08em;
+  }
+  .must  { background: rgba(201,76,76,0.15); color: #e88a8a; }
+  .nice  { background: rgba(201,168,76,0.12); color: var(--gold); }
+  .defer-tag { background: rgba(100,100,100,0.12); color: var(--cream-dim); }
+  .checklist li > div { flex: 1; }
+
+  /* ── Flow steps ── */
+  .flow-stage { margin-bottom: 36px; }
+  .flow-stage-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .flow-step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 8px 0;
+    font-size: 13px;
+    color: var(--cream-dim);
+    line-height: 1.5;
+  }
+  .flow-step .step-icon {
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-family: var(--mono);
+    margin-top: 1px;
+  }
+  .step-action { background: #1a2a1e; border: 1px solid #2a7a4a; color: #4cc97a; }
+  .step-system { background: #1f1a2a; border: 1px solid #4a2a7a; color: #9a4cc9; }
+  .step-legal  { background: #2a1a1a; border: 1px solid #7a2a2a; color: #c94c4c; }
+  .step-info   { background: #1a1f2a; border: 1px solid #2a4a7a; color: #4c8ac9; }
+
+  /* ── Open items ── */
+  .open-item {
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background: var(--panel);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .open-item .oi-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold-dim);
+    min-width: 24px;
+    margin-top: 1px;
+  }
+  .open-item .oi-title { font-size: 14px; color: var(--cream); font-weight: 500; margin-bottom: 4px; }
+  .open-item .oi-body  { font-size: 12px; color: var(--cream-dim); line-height: 1.6; }
+  .open-item .oi-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+  .tag-legal  { background: rgba(201,76,76,0.12);  color: #e88a8a; }
+  .tag-tech   { background: rgba(76,138,201,0.12); color: var(--blue); }
+  .tag-biz    { background: rgba(201,168,76,0.12); color: var(--gold); }
+  .tag-design { background: rgba(76,201,201,0.12); color: var(--teal); }
+
+  /* ── Decision log ── */
+  .decision {
+    padding: 14px 18px;
+    border-left: 2px solid var(--gold-dim);
+    margin-bottom: 10px;
+    background: rgba(201,168,76,0.04);
+  }
+  .decision .d-label { font-family: var(--mono); font-size: 10px; color: var(--gold-dim); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px; }
+  .decision .d-text  { font-size: 13px; color: var(--cream-dim); }
+  .decision .d-text strong { color: var(--cream); }
+
+  /* ── Divider ── */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+  /* ── Footer ── */
+  .doc-footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .doc-footer span { font-family: var(--mono); font-size: 11px; color: var(--cream-dim); }
+  .doc-footer .bl-badge { color: var(--gold); }
+
+  @media print {
+    body { background: white; color: #111; }
+    .cover { background: #0d1410; color: white; }
+    .phase-card { break-inside: avoid; }
+    .open-item  { break-inside: avoid; }
+    .callout    { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     COVER
+════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-label">Blackbox Logic · Client Deliverable</div>
+  <div class="cover-title">Real Estate<br><strong>Investor Platform</strong></div>
+  <div class="cover-subtitle">Project Decisions & Architecture Document</div>
+  <div class="cover-rule"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <label>Prepared By</label>
+      <span>Blackbox Logic</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Client Type</label>
+      <span>Real Estate LLC → REIT (Target)</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Location</label>
+      <span>Florida / Treasure Coast</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Status</label>
+      <span>Pre-Production — Planning Phase</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Document Version</label>
+      <span>1.0</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     1. PROJECT OVERVIEW
+════════════════════════════════════════════ -->
+<div class="container">
+  <div class="section-label">Section 01</div>
+  <h2>Project Overview</h2>
+
+  <p>The client is a newly formed real estate investment LLC with a long-term goal of transitioning into a Real Estate Investment Trust (REIT). The business model involves identifying specific investment properties, then gathering a pool of known investors to fund each acquisition — operating as a property management and investment group rather than a broad public fund.</p>
+
+  <p>Blackbox Logic has been engaged to design and build two interconnected products: a <strong>public-facing marketing website</strong> that communicates the company's mission, team, and general property portfolio; and a <strong>private, invitation-only investor portal</strong> where approved investors can view their positions, fund new opportunities, and receive distributions.</p>
+
+  <div class="callout gold">
+    <div class="callout-title">⚡ Immediate Priority</div>
+    <p>A production-ready public website must be live by end of this week. The investor portal backend will be built in subsequent phases. The portal codebase (currently in demo/mock-data state) will remain in the codebase but be feature-flagged off for the initial launch.</p>
+  </div>
+
+  <h3>Client Structure</h3>
+  <p>The client is structured as an <strong>LLC management group</strong>, not a REIT or registered fund. They identify specific properties, then invite known contacts to co-invest in each acquisition. This is a deal-by-deal model rather than a pooled fund, and investor access is invitation-only through pre-existing relationships — which aligns with SEC Regulation D Rule 506(b) private placement exemptions.</p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     2. REGULATORY CONTEXT
+════════════════════════════════════════════ -->
+<div class="container page-break">
+  <div class="section-label">Section 02</div>
+  <h2>Regulatory Context</h2>
+
+  <div class="callout red">
+    <div class="callout-title">⚠️ Important — Please Read</div>
+    <p>The client's structure — regardless of LLC formation — constitutes a securities offering under federal law. The LLC wrapper does not exempt them from SEC rules. What they are conducting is a <strong>private placement</strong>, most likely under <strong>Regulation D, Rule 506(b)</strong>. This is not a loophole; it is a legal framework with specific requirements. A qualified securities attorney must review their structure before any investor funds are accepted.</p>
+  </div>
+
+  <h3>Rule 506(b) — What It Allows</h3>
+  <p>Under Regulation D Rule 506(b), the client may raise an <strong>unlimited amount of capital</strong> with the following conditions:</p>
+  <ul class="task-list" style="margin-bottom:20px;">
+    <li>Up to 35 non-accredited but "sophisticated" investors may participate alongside unlimited accredited investors</li>
+    <li>No general solicitation or broad public advertising of specific offerings is permitted</li>
+    <li>Raises must be conducted through pre-existing, substantive relationships with investors</li>
+    <li>Detailed disclosures (similar to public offerings) are required if any non-accredited investors are included</li>
+    <li>A <strong>Form D</strong> must be filed with the SEC within 15 days of the first sale</li>
+    <li>A <strong>Private Placement Memorandum (PPM)</strong> is strongly recommended</li>
+  </ul>
+
+  <h3>How the Portal Architecture Supports 506(b)</h3>
+  <p>The invitation-only, password-protected investor portal is not just a UX decision — it is part of the client's legal compliance posture. A closed, password-protected portal for pre-existing investors is explicitly acceptable under 506(b). The invite-link model (approved contacts only receive a secure, single-use onboarding link) creates a paper trail of the pre-existing relationship requirement.</p>
+
+  <div class="callout blue">
+    <div class="callout-title">📋 Required Client Actions (Before Accepting Funds)</div>
+    <p>The client must engage a securities attorney to confirm their 506(b) structure, draft a PPM, prepare investor disclosures, and establish a filing process for Form D with the SEC after each offering's first close. State-level "Blue Sky" securities laws in Florida may also apply.</p>
+  </div>
+
+  <h3>Accredited Investor Verification — Backburner</h3>
+  <p>Under 506(b), formal accreditation verification services (such as Parallel Markets or iCapital) are not required, since the raise is relationship-driven and may include up to 35 sophisticated non-accredited investors. These services have been noted for future use when/if the client transitions to a Rule 506(c) offering or REIT structure, which permits general solicitation but requires verified accreditation for all investors.</p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     3. FULL TECHNOLOGY STACK
+════════════════════════════════════════════ -->
+<div class="container page-break">
+  <div class="section-label">Section 03</div>
+  <h2>Full Technology Stack</h2>
+  <p>Every service in this stack was selected for a specific reason. The following table documents the final agreed-upon stack and the role of each service.</p>
+
+  <table class="stack-table">
+    <thead>
+      <tr>
+        <th>Service / Tool</th>
+        <th>Role in Platform</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="cat-row"><td colspan="3">Frontend & Content</td></tr>
+      <tr>
+        <td>Next.js (React)</td>
+        <td>Primary application framework — public marketing site and investor portal as a single codebase</td>
+        <td>Existing demo built on this base</td>
+      </tr>
+      <tr>
+        <td>Sanity CMS</td>
+        <td>Headless CMS for all marketing content. Client team edits founders bios, events, market updates, and blog posts without touching code</td>
+        <td>Free tier sufficient for launch</td>
+      </tr>
+      <tr>
+        <td>Tailwind CSS</td>
+        <td>Styling and responsive layout</td>
+        <td>Already in demo</td>
+      </tr>
+
+      <tr class="cat-row"><td colspan="3">Authentication & Identity</td></tr>
+      <tr>
+        <td>Auth0</td>
+        <td>Full authentication — JWT-based login, mandatory MFA (TOTP authenticator app or SMS), role-based access control (Investor / Admin / Super Admin), audit logging</td>
+        <td>Replaces any mock auth in demo</td>
+      </tr>
+      <tr>
+        <td>Plaid Identity Verification</td>
+        <td>KYC compliance — government ID scan, liveness/selfie match, identity verification embedded in the investor onboarding wizard</td>
+        <td>Developer-friendly, free tier available</td>
+      </tr>
+
+      <tr class="cat-row"><td colspan="3">Banking & Payments</td></tr>
+      <tr>
+        <td>Plaid Link</td>
+        <td>Investor bank account connection and instant verification. Generates a processor token passed directly to Dwolla — raw account and routing numbers are never stored in the platform database</td>
+        <td>Pairs natively with Dwolla</td>
+      </tr>
+      <tr>
+        <td>Dwolla</td>
+        <td>All money movement: ACH pulls for investor contributions, Mass Pay for distribution payouts (up to 5,000 at a time), real-time payment rails via RTP Network and FedNow Service. Tokenized — no raw bank data stored</td>
+        <td>Primary payment processor for this platform</td>
+      </tr>
+
+      <tr class="cat-row"><td colspan="3">Documents & Legal</td></tr>
+      <tr>
+        <td>DocuSign API</td>
+        <td>Embedded digital signing for all legal agreements: risk disclosure, platform terms of service, and per-property subscription agreements. Signed envelopes stored to S3. Triggered programmatically from onboarding and investment flows</td>
+        <td>Templates built in DocuSign console; merge fields for investor name, entity, amount, property</td>
+      </tr>
+      <tr>
+        <td>AWS S3</td>
+        <td>Secure document storage — all signed DocuSign PDFs, K-1 tax documents, annual reports, and investor statements. Encrypted at rest, access-controlled per investor</td>
+        <td>Part of AWS infrastructure</td>
+      </tr>
+
+      <tr class="cat-row"><td colspan="3">Property Management Data</td></tr>
+      <tr>
+        <td>DoorLoop API</td>
+        <td>Feeds live property data into the investor portal: property details, financials, occupancy rates. Client is already using DoorLoop (Premium tier, ~$200/mo) which includes API access</td>
+        <td>API data powers property cards and offering detail pages</td>
+      </tr>
+
+      <tr class="cat-row"><td colspan="3">Cloud Infrastructure (AWS)</td></tr>
+      <tr>
+        <td>AWS Amplify or Elastic Beanstalk</td>
+        <td>Application hosting and CI/CD deployment pipeline</td>
+        <td>SOC 2, ISO 27001, PCI-DSS compliant out of the box</td>
+      </tr>
+      <tr>
+        <td>AWS RDS (PostgreSQL)</td>
+        <td>Primary relational database — all investor records, transactions, offering data, onboarding state</td>
+        <td>Automated backups, encryption at rest</td>
+      </tr>
+      <tr>
+        <td>AWS CloudWatch</td>
+        <td>Application monitoring, error logging, uptime alerts, audit trail for all financial events</td>
+        <td>Required for financial platform compliance posture</td>
+      </tr>
+
+      <tr class="cat-row"><td colspan="3">Communication</td></tr>
+      <tr>
+        <td>SendGrid or Postmark</td>
+        <td>All transactional emails: invite links, KYC confirmation, signing requests, payment confirmations, distribution notifications, tax document availability alerts</td>
+        <td>Postmark preferred for transactional reliability</td>
+      </tr>
+
+      <tr class="cat-row future"><td colspan="3">Future / Backburner (Not in Current Build)</td></tr>
+      <tr class="future">
+        <td>Parallel Markets / iCapital</td>
+        <td>Accredited investor verification via API — portable investor identity, 24/7 AML/OFAC monitoring, automated accreditation status renewal</td>
+        <td>Activate when transitioning to 506(c) or REIT structure requiring verified accreditation</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     4. INVESTOR ONBOARDING FLOW
+════════════════════════════════════════════ -->
+<div class="container page-break">
+  <div class="section-label">Section 04</div>
+  <h2>Investor Onboarding Flow</h2>
+  <p>The following flow describes the complete journey from a prospective investor's first contact with the platform through to becoming an active, funded investor. Only individuals who have been manually approved by the client team receive an onboarding link.</p>
+
+  <!-- Stage 1 -->
+  <div class="flow-stage">
+    <div class="flow-stage-title">Stage 01 — Discovery (Public Site)</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Visitor lands on public marketing site and views general content (founders, team, properties — no deal financials)</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Visitor clicks "Request Investor Access" CTA</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Submits interest form: name, email, phone, investment range, how they know the firm</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>Form triggers email notification to client admin team</div>
+    <div class="flow-step"><div class="step-icon step-legal">?</div><strong style="color:var(--cream)">506(b) check:</strong> Client team manually verifies pre-existing relationship exists before approving</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>Admin approves → system generates time-limited (72hr), single-use, email-locked invite link</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>Invite email sent to prospective investor via SendGrid/Postmark</div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div class="flow-stage">
+    <div class="flow-stage-title">Stage 02 — Account Creation</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Investor clicks invite link — token verified (single-use, email-locked, not expired)</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Creates account: email + strong password (Auth0)</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Mandatory MFA setup — TOTP authenticator app or SMS (Auth0)</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Profile setup: full legal name, address, date of birth, entity type (Individual / LLC / Trust / IRA)</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Tax information: SSN or EIN collected (encrypted at rest — required for K-1 / 1099 filing)</div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div class="flow-stage">
+    <div class="flow-stage-title">Stage 03 — Identity Verification (KYC)</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Plaid IDV embedded flow launches — investor uploads government-issued photo ID</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Liveness check / selfie match performed in real time</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>Plaid returns verification result — stored to investor record in database</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>If verification fails: admin notified, investor prompted to re-submit or contact support</div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div class="flow-stage">
+    <div class="flow-stage-title">Stage 04 — Agreements (DocuSign)</div>
+    <div class="flow-step"><div class="step-icon step-legal">✎</div>Risk Disclosure document presented — investor reviews and signs (DocuSign embedded flow)</div>
+    <div class="flow-step"><div class="step-icon step-legal">✎</div>Platform Terms of Service reviewed and signed (DocuSign)</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>Signed PDFs stored to AWS S3; envelope IDs and document links saved to investor record in DB</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>Investor status updated: Agreement Complete → proceed to bank linking</div>
+  </div>
+
+  <!-- Stage 5 -->
+  <div class="flow-stage">
+    <div class="flow-stage-title">Stage 05 — Bank Account Linking (Plaid + Dwolla)</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Plaid Link modal opens — investor connects their bank account (instant verification)</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>Plaid generates a processor token and passes it directly to Dwolla</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>Dwolla creates investor customer record and funding source — raw account numbers never stored in platform database</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Investor may optionally add multiple bank accounts for future flexibility</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>Onboarding status: ACTIVE — investor redirected to their dashboard</div>
+  </div>
+
+  <!-- Stage 6 -->
+  <div class="flow-stage">
+    <div class="flow-stage-title">Stage 06 — Active Investor (Portal)</div>
+    <div class="flow-step"><div class="step-icon step-info">i</div>Dashboard displays: portfolio overview, total invested, distributions received, active property opportunities</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Investor browses property offerings (powered by DoorLoop API data)</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Selects "Invest Now" on a property — chooses investment amount ($1,000 minimum)</div>
+    <div class="flow-step"><div class="step-icon step-legal">✎</div>Property-specific Subscription Agreement reviewed and signed via DocuSign</div>
+    <div class="flow-step"><div class="step-icon step-action">→</div>Confirms bank account → Dwolla initiates ACH pull</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>Investment recorded in portfolio; confirmation email sent via SendGrid/Postmark</div>
+    <div class="flow-step"><div class="step-icon step-system">⚙</div>Distributions paid to investor's linked bank via Dwolla Mass Pay on scheduled intervals</div>
+    <div class="flow-step"><div class="step-icon step-info">i</div>K-1 and annual tax documents uploaded to investor Document Center by admin each year</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     5. BUILD PHASES
+════════════════════════════════════════════ -->
+<div class="container page-break">
+  <div class="section-label">Section 05</div>
+  <h2>Build Phases — Demo to Production</h2>
+  <p>The platform will be built across 7 phases over approximately 14 weeks, beginning from the existing demo codebase. The public website will be published at the end of this week as a standalone launch before the portal backend is complete.</p>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num" style="color:var(--gold)">01</div>
+      <div class="phase-meta">
+        <div class="phase-title">Foundation & Auth</div>
+        <div class="phase-weeks">Weeks 1–3</div>
+      </div>
+      <div class="phase-badge" style="background:rgba(201,168,76,0.1);color:var(--gold);border:1px solid rgba(201,168,76,0.3);">Infrastructure</div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-goal"><span>Goal:</span> Secure infrastructure and real user authentication replacing demo mock auth</div>
+      <ul class="task-list">
+        <li>Integrate Auth0 with JWT-based auth and mandatory MFA (TOTP or SMS)</li>
+        <li>Provision AWS: RDS (PostgreSQL), S3 buckets, Amplify or Elastic Beanstalk deployment</li>
+        <li>Define user role model: Investor, Admin, Super Admin</li>
+        <li>Build investor profile data model and database schema</li>
+        <li>Invite-link generation system (time-limited, single-use, email-locked tokens)</li>
+        <li>Basic admin dashboard: view all investors, onboarding statuses, manual approvals</li>
+        <li>Email delivery integration (SendGrid or Postmark) with template system</li>
+        <li>Feature flag system for portal (NEXT_PUBLIC_PORTAL_ENABLED env variable)</li>
+      </ul>
+      <div class="deliverable-row"><span class="dlabel">✓ Deliverable</span><span>Real login, MFA-protected accounts, admin investor management view, invite link system operational</span></div>
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num" style="color:#4c8ac9">02</div>
+      <div class="phase-meta">
+        <div class="phase-title">KYC & Onboarding Wizard</div>
+        <div class="phase-weeks">Weeks 3–5</div>
+      </div>
+      <div class="phase-badge" style="background:rgba(76,138,201,0.1);color:#4c8ac9;border:1px solid rgba(76,138,201,0.3);">Compliance</div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-goal"><span>Goal:</span> Legally compliant investor identity verification and legal agreement signing</div>
+      <ul class="task-list">
+        <li>Integrate Plaid Identity Verification — government ID scan + liveness/selfie check</li>
+        <li>Build multi-step onboarding wizard UI (profile → KYC → agreements → bank → active)</li>
+        <li>DocuSign API integration with embedded signing for all investor agreements</li>
+        <li>Create DocuSign templates: Risk Disclosure, Platform TOS, Subscription Agreement (with merge fields)</li>
+        <li>Store signed envelope IDs and S3 document links to investor records</li>
+        <li>Onboarding state machine: Invited → KYC Pending → Agreement Pending → Bank Pending → Active</li>
+        <li>Admin override capability to manually advance or reset onboarding status</li>
+      </ul>
+      <div class="deliverable-row"><span class="dlabel">✓ Deliverable</span><span>Full compliant onboarding flow — investor lands in dashboard after completion</span></div>
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num" style="color:#4cc97a">03</div>
+      <div class="phase-meta">
+        <div class="phase-title">Banking & Payments</div>
+        <div class="phase-weeks">Weeks 5–7</div>
+      </div>
+      <div class="phase-badge" style="background:rgba(76,201,122,0.1);color:#4cc97a;border:1px solid rgba(76,201,122,0.3);">Money Movement</div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-goal"><span>Goal:</span> Real money movement — investor contributions in, distribution payouts out</div>
+      <ul class="task-list">
+        <li>Plaid Link integration for investor bank account connection and instant verification</li>
+        <li>Dwolla customer record creation linked to each investor profile</li>
+        <li>Dwolla funding source via Plaid processor token (no raw bank numbers in DB)</li>
+        <li>Investment flow: amount selection → DocuSign subscription agreement → Dwolla ACH pull</li>
+        <li>Admin triggers distribution payouts via Dwolla Mass Pay API (up to 5,000 at a time)</li>
+        <li>Webhook handlers for all Dwolla payment events: success, failed, returned, pending</li>
+        <li>Automated email notifications on every payment event</li>
+        <li>Full sandbox testing before production keys activated</li>
+      </ul>
+      <div class="deliverable-row"><span class="dlabel">✓ Deliverable</span><span>End-to-end investment contribution and investor distribution money movement operational</span></div>
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num" style="color:#c94c9a">04</div>
+      <div class="phase-meta">
+        <div class="phase-title">DoorLoop Integration & Property Portal</div>
+        <div class="phase-weeks">Weeks 7–9</div>
+      </div>
+      <div class="phase-badge" style="background:rgba(201,76,154,0.1);color:#c94c9a;border:1px solid rgba(201,76,154,0.3);">Data Integration</div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-goal"><span>Goal:</span> Live property data from DoorLoop feeding the investor portal</div>
+      <ul class="task-list">
+        <li>DoorLoop API connection — pull property details, financials, occupancy data</li>
+        <li>Property listing cards and detail pages within the investor portal</li>
+        <li>Offering record model in DB: property → raise target, minimum investment, timeline, status</li>
+        <li>Real-time investment progress bar (total raised vs. target per offering)</li>
+        <li>Map investor transactions to specific property offerings</li>
+        <li>Admin panel: create, configure, and publish property offerings to the portal</li>
+        <li>Property status states: Coming Soon / Active Raise / Funded / In Operation</li>
+      </ul>
+      <div class="deliverable-row"><span class="dlabel">✓ Deliverable</span><span>Live property data visible to investors; offerings configurable and manageable by admin</span></div>
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num" style="color:#c97a4c">05</div>
+      <div class="phase-meta">
+        <div class="phase-title">Investor Dashboard & Reporting</div>
+        <div class="phase-weeks">Weeks 9–11</div>
+      </div>
+      <div class="phase-badge" style="background:rgba(201,122,76,0.1);color:#c97a4c;border:1px solid rgba(201,122,76,0.3);">Investor UX</div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-goal"><span>Goal:</span> Full self-service investor experience with real portfolio data</div>
+      <ul class="task-list">
+        <li>Portfolio overview: total invested, distributions received, current active property positions</li>
+        <li>Per-property investment detail with full transaction history</li>
+        <li>Distribution history, schedule, and projected next payout date</li>
+        <li>Document center: K-1s, tax documents, agreements — all accessible from S3</li>
+        <li>In-app notification system + email for all key investor events</li>
+        <li>Admin can upload documents (K-1s, reports) directly to individual investor accounts</li>
+        <li>Investment summary statement generation (PDF export)</li>
+      </ul>
+      <div class="deliverable-row"><span class="dlabel">✓ Deliverable</span><span>Complete investor-facing portal — fully self-service capable</span></div>
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num" style="color:#9a4cc9">06</div>
+      <div class="phase-meta">
+        <div class="phase-title">Sanity CMS & Public Website Polish</div>
+        <div class="phase-weeks">Weeks 11–12</div>
+      </div>
+      <div class="phase-badge" style="background:rgba(154,76,201,0.1);color:#9a4cc9;border:1px solid rgba(154,76,201,0.3);">Content & SEO</div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-goal"><span>Goal:</span> Marketing site connected to Sanity CMS, cleanly gated from deal specifics</div>
+      <ul class="task-list">
+        <li>Sanity CMS schema: founders, team bios, market updates, events, FAQ</li>
+        <li>Connect Sanity content API to all public-facing Next.js pages</li>
+        <li>Investor Access Request form → admin email notification + optional CRM entry</li>
+        <li>SEO optimization: OpenGraph tags, structured data, sitemap, robots.txt</li>
+        <li>Mobile responsiveness audit across all public and portal pages</li>
+        <li>Performance optimization (target Core Web Vitals green scores)</li>
+        <li>Legal pages: Privacy Policy, Terms of Service, Investment Disclaimer</li>
+      </ul>
+      <div class="deliverable-row"><span class="dlabel">✓ Deliverable</span><span>Production-ready public marketing site fully connected to CMS, portal cleanly gated</span></div>
+    </div>
+  </div>
+
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num" style="color:#4cc9c9">07</div>
+      <div class="phase-meta">
+        <div class="phase-title">QA, Security Audit & Launch</div>
+        <div class="phase-weeks">Weeks 12–14</div>
+      </div>
+      <div class="phase-badge" style="background:rgba(76,201,201,0.1);color:#4cc9c9;border:1px solid rgba(76,201,201,0.3);">Launch</div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-goal"><span>Goal:</span> Harden, test, and launch the full platform to real investors</div>
+      <ul class="task-list">
+        <li>AWS Inspector security scan + third-party penetration testing (recommended)</li>
+        <li>End-to-end Dwolla sandbox → production payment flow verification</li>
+        <li>Load testing and performance benchmarking under simulated investor volume</li>
+        <li>Compliance review with client's securities attorney (506b posture, PPM review, Form D)</li>
+        <li>Soft launch to a small cohort of known investors for real-world validation</li>
+        <li>Monitoring setup: AWS CloudWatch, Sentry error tracking, uptime alerts</li>
+        <li>Client admin team training on the admin dashboard and investor management tools</li>
+        <li>Full production launch</li>
+      </ul>
+      <div class="deliverable-row"><span class="dlabel">✓ Deliverable</span><span>Live, production-hardened platform accepting real investor contributions and paying distributions</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     6. CURRENT PUBLISHING PLAN
+════════════════════════════════════════════ -->
+<div class="container page-break">
+  <div class="section-label">Section 06</div>
+  <h2>Current Publishing Plan</h2>
+  <p>The client requires a production-ready public website live by end of this week. The investor portal backend is not yet built, but the demo portal codebase must be preserved for future phases.</p>
+
+  <h3>Feature Flag Strategy</h3>
+  <p>The cleanest approach is to <strong>keep the portal code intact and gate it with a single environment variable</strong>. Nothing is deleted or dismantled. When the backend is ready, the flag is flipped and the portal reconnects.</p>
+
+  <div class="callout teal">
+    <div class="callout-title">Implementation</div>
+    <p>Add <code style="font-family:var(--mono);font-size:12px;color:var(--teal)">NEXT_PUBLIC_PORTAL_ENABLED=false</code> to the environment. Any route under <code style="font-family:var(--mono);font-size:12px;color:var(--teal)">/portal</code> or <code style="font-family:var(--mono);font-size:12px;color:var(--teal)">/dashboard</code> checks this flag and redirects to a "Investor Portal — Coming Soon" page with the interest request form. When backend is ready: flip to <code style="font-family:var(--mono);font-size:12px;color:var(--teal)">true</code> and reconnect.</p>
+  </div>
+
+  <h3>Portal Provider Option (Alternative Path)</h3>
+  <p>A third-party hosted investor portal (such as InvestNext or SyndicationPro) could be deployed faster than a custom backend build. In this scenario, the public site simply includes an "Investor Login" button linking to the provider's hosted portal. This decouples the portal entirely from the custom build.</p>
+
+  <p>The <strong>current recommendation is to proceed with the custom build (Path A)</strong>, using the feature flag approach for launch, since the demo scaffolding is already in place and long-term control and branding is more valuable. Path B (third-party provider) remains an option only if client budget or timeline become critical blockers in Phases 2–3.</p>
+
+  <hr class="divider" />
+
+  <h3>Public Site Launch Checklist — This Week</h3>
+
+  <h4>Must Have for Launch</h4>
+  <ul class="checklist">
+    <li class="priority"><div class="check-box warn"></div><div>Hero section with clear value proposition and "Request Investor Access" CTA <span class="priority-label must">Must</span></div></li>
+    <li class="priority"><div class="check-box warn"></div><div>About / Mission / Company Overview section <span class="priority-label must">Must</span></div></li>
+    <li class="priority"><div class="check-box warn"></div><div>How It Works — 3 to 5 step overview of the investment process <span class="priority-label must">Must</span></div></li>
+    <li class="priority"><div class="check-box warn"></div><div>Properties / Portfolio section — general showcase, no deal-specific financials <span class="priority-label must">Must</span></div></li>
+    <li class="priority"><div class="check-box warn"></div><div>Team / Founders bios section <span class="priority-label must">Must</span></div></li>
+    <li class="priority"><div class="check-box warn"></div><div>Investor Access Request form (name, email, phone, investment range) — triggers admin notification <span class="priority-label must">Must</span></div></li>
+    <li class="priority"><div class="check-box warn"></div><div>Privacy Policy page <span class="priority-label must">Must</span></div></li>
+    <li class="priority"><div class="check-box warn"></div><div>Terms of Service page <span class="priority-label must">Must</span></div></li>
+    <li class="priority"><div class="check-box warn"></div><div>Investment Risk Disclaimer (especially important given securities context) <span class="priority-label must">Must</span></div></li>
+    <li class="priority"><div class="check-box warn"></div><div>Investor Portal "Coming Soon" page — gated via feature flag, replaces active portal routes <span class="priority-label must">Must</span></div></li>
+    <li class="priority"><div class="check-box warn"></div><div>Mobile responsiveness across all pages <span class="priority-label must">Must</span></div></li>
+    <li class="priority"><div class="check-box warn"></div><div>Contact information or contact form <span class="priority-label must">Must</span></div></li>
+  </ul>
+
+  <h4>Nice to Have at Launch</h4>
+  <ul class="checklist">
+    <li><div class="check-box"></div><div>FAQ section — common investor questions <span class="priority-label nice">Nice</span></div></li>
+    <li><div class="check-box"></div><div>Market Updates / Blog — even 1–2 placeholder posts (via Sanity if connected) <span class="priority-label nice">Nice</span></div></li>
+    <li><div class="check-box"></div><div>Subtle scroll animations or entrance transitions for polish <span class="priority-label nice">Nice</span></div></li>
+    <li><div class="check-box"></div><div>Google Analytics or privacy-friendly analytics (Plausible) installed <span class="priority-label nice">Nice</span></div></li>
+  </ul>
+
+  <h4>Defer Until Portal Launch</h4>
+  <ul class="checklist">
+    <li class="defer"><div class="check-box"></div><div>Investor Login button / link to portal <span class="priority-label defer-tag">Defer</span></div></li>
+    <li class="defer"><div class="check-box"></div><div>Deal-specific financial data or offering details on public site <span class="priority-label defer-tag">Defer</span></div></li>
+    <li class="defer"><div class="check-box"></div><div>Sanity CMS full integration (can use static content at launch, migrate to Sanity in Phase 6) <span class="priority-label defer-tag">Defer</span></div></li>
+  </ul>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     7. KEY DECISIONS LOG
+════════════════════════════════════════════ -->
+<div class="container page-break">
+  <div class="section-label">Section 07</div>
+  <h2>Key Decisions Log</h2>
+  <p>A record of all architectural and strategic decisions made during planning for future reference.</p>
+
+  <div class="decision">
+    <div class="d-label">Payment Processor</div>
+    <div class="d-text">Using <strong>Dwolla</strong> (not Stripe) for all ACH payments and investor distributions. Dwolla handles tokenized money movement and Mass Pay. Stripe is excluded from the stack.</div>
+  </div>
+  <div class="decision">
+    <div class="d-label">Bank Linking</div>
+    <div class="d-text"><strong>Plaid Link</strong> handles bank account connection and instant verification. The Plaid processor token is passed directly to Dwolla. Raw bank account and routing numbers are never stored in the platform database.</div>
+  </div>
+  <div class="decision">
+    <div class="d-label">Document Signing</div>
+    <div class="d-text"><strong>DocuSign API</strong> is the selected e-signature provider for all investor agreements. Templates will be built in DocuSign console with merge fields for investor and property data.</div>
+  </div>
+  <div class="decision">
+    <div class="d-label">Cloud Hosting</div>
+    <div class="d-text"><strong>AWS</strong> selected for hosting due to SOC 2, ISO 27001, and PCI-DSS compliance. This is a non-negotiable for a regulated financial platform. Services: Amplify or Elastic Beanstalk (app), RDS PostgreSQL (database), S3 (documents), CloudWatch (monitoring).</div>
+  </div>
+  <div class="decision">
+    <div class="d-label">Property Management</div>
+    <div class="d-text">Client is already on <strong>DoorLoop Premium (~$200/mo)</strong> which includes API access. DoorLoop is the confirmed property management data source. No migration to AppFolio or Yardi at this stage.</div>
+  </div>
+  <div class="decision">
+    <div class="d-label">CMS for Marketing Content</div>
+    <div class="d-text"><strong>Sanity</strong> is the selected headless CMS for all public-facing marketing content. Client team can edit founders, events, market updates, and blog posts without developer involvement.</div>
+  </div>
+  <div class="decision">
+    <div class="d-label">Accreditation Verification</div>
+    <div class="d-text">Parallel Markets / iCapital is <strong>on the backburner</strong> and excluded from the current build. It will be evaluated when the client transitions to a 506(c) structure or REIT requiring verified accreditation.</div>
+  </div>
+  <div class="decision">
+    <div class="d-label">Portal Strategy at Launch</div>
+    <div class="d-text">The demo portal codebase is preserved. A <strong>feature flag</strong> (environment variable) hides it at launch. When backend phases are complete, the flag is flipped and the portal goes live. Custom build (Path A) preferred over a white-label third-party provider.</div>
+  </div>
+  <div class="decision">
+    <div class="d-label">Investor Access Model</div>
+    <div class="d-text">Invitation-only access. Only manually approved individuals receive a <strong>time-limited, single-use, email-locked invite link</strong>. This model supports 506(b) compliance requirements for pre-existing relationships.</div>
+  </div>
+  <div class="decision">
+    <div class="d-label">Regulatory Structure</div>
+    <div class="d-text">Client operates under a <strong>Regulation D Rule 506(b)</strong> private placement framework. The LLC structure does not exempt them from SEC rules. A securities attorney must be engaged before any investor funds are accepted.</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     8. OPEN ITEMS & FURTHER CONSIDERATION
+════════════════════════════════════════════ -->
+<div class="container page-break">
+  <div class="section-label">Section 08</div>
+  <h2>Open Items & Things to Consider</h2>
+  <p>These are items not yet finalized, questions that should be answered before development progresses, and considerations that did not come up in planning but are important for a project of this type.</p>
+
+  <div class="open-item">
+    <div class="oi-num">01</div>
+    <div>
+      <div class="oi-title">Securities Attorney Engagement</div>
+      <div class="oi-body">The client must retain a qualified securities attorney before any investor money is accepted. They need a PPM (Private Placement Memorandum), investor disclosure documents, a Form D filing process, and confirmation of their 506(b) structure. This is not optional — it is a legal prerequisite. Building the technology without legal structure in place creates liability for both the client and potentially Blackbox Logic.</div>
+    </div>
+    <div class="oi-tag tag-legal">Legal</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">02</div>
+    <div>
+      <div class="oi-title">Brand Identity & Design System</div>
+      <div class="oi-body">Does the client have an established brand? Logo, color palette, typography, and brand guidelines need to be confirmed before the public website is finalized. If brand identity work is needed, that is a separate deliverable that must be scoped and completed before the site can be finalized for launch.</div>
+    </div>
+    <div class="oi-tag tag-design">Design</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">03</div>
+    <div>
+      <div class="oi-title">Domain, DNS & SSL Certificate</div>
+      <div class="oi-body">The production domain name must be confirmed and pointed to AWS before launch. SSL/TLS certificate must be provisioned (AWS Certificate Manager handles this for free). The client should also confirm whether they want www-redirects, and whether any subdomains will be used (e.g., portal.domain.com vs domain.com/portal).</div>
+    </div>
+    <div class="oi-tag tag-tech">Tech</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">04</div>
+    <div>
+      <div class="oi-title">Content Readiness for Launch</div>
+      <div class="oi-body">The public website needs final copy for every section: hero tagline, mission statement, How It Works steps, team bios (with headshots), and property showcase content. Who is providing this content and is there a copywriter involved? A website cannot launch without real content — placeholder Lorem Ipsum is not appropriate for a financial investment company.</div>
+    </div>
+    <div class="oi-tag tag-biz">Business</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">05</div>
+    <div>
+      <div class="oi-title">Legal Page Authorship</div>
+      <div class="oi-body">Privacy Policy, Terms of Service, and the Investment Risk Disclaimer are legal documents. They should be reviewed or authored by an attorney — not boilerplate generators. These pages have legal standing and need to accurately reflect the company's data practices, investor rights, and regulatory posture. This is especially true given the securities context.</div>
+    </div>
+    <div class="oi-tag tag-legal">Legal</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">06</div>
+    <div>
+      <div class="oi-title">DocuSign Template Preparation</div>
+      <div class="oi-body">Three DocuSign templates need to be built before Phase 2 can begin: the Risk Disclosure, the Platform Terms of Service, and the Property Subscription Agreement. The Subscription Agreement template requires merge field planning — what investor and property data needs to be dynamically inserted? These templates may require attorney review before being used to bind investor agreements.</div>
+    </div>
+    <div class="oi-tag tag-legal">Legal</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">07</div>
+    <div>
+      <div class="oi-title">Minimum Investment & Distribution Schedule</div>
+      <div class="oi-body">The $1,000 minimum investment is confirmed. The distribution schedule (monthly, quarterly, per-deal) has not been defined. This directly affects the Dwolla Mass Pay implementation and the investor dashboard's distribution calendar feature. The business model for each property offering needs to be standardized before the payment flow can be fully implemented.</div>
+    </div>
+    <div class="oi-tag tag-biz">Business</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">08</div>
+    <div>
+      <div class="oi-title">DoorLoop API Access & Data Mapping</div>
+      <div class="oi-body">DoorLoop's API must be tested against the client's actual account and property data. It needs to be confirmed what specific endpoints are available on their Premium tier, what property fields are exposed (address, financials, occupancy, photos), and whether the data structure maps cleanly to the investor portal's property card and detail page designs.</div>
+    </div>
+    <div class="oi-tag tag-tech">Tech</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">09</div>
+    <div>
+      <div class="oi-title">Tax Handling & K-1 Generation</div>
+      <div class="oi-body">Investors will receive K-1 tax forms annually (or possibly 1099s, depending on deal structure). Who generates these — the client's accountant, the attorney, or a service? The platform needs to store them, but the document generation process is outside the platform scope and must be accounted for in the client's operational workflow. A CPA familiar with real estate syndication should be involved.</div>
+    </div>
+    <div class="oi-tag tag-legal">Legal</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">10</div>
+    <div>
+      <div class="oi-title">Admin Team Training & Operational Playbook</div>
+      <div class="oi-body">The client's admin team will need to know how to: approve and invite investors, manage DocuSign templates, upload documents to investor accounts, trigger distribution payouts via Dwolla, create and manage property offerings, and respond to failed payment events. An operational playbook and training session should be scoped as a deliverable alongside the platform.</div>
+    </div>
+    <div class="oi-tag tag-biz">Business</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">11</div>
+    <div>
+      <div class="oi-title">Investor Communication Strategy</div>
+      <div class="oi-body">Under 506(b), investors must be kept informed — monthly, quarterly, or annual updates are expected by law and by investor expectations. The platform should support admin-authored updates pushed to investors, but a communication cadence and content strategy needs to be defined. Is this handled in-platform, or via a separate email marketing tool like Mailchimp or ConvertKit?</div>
+    </div>
+    <div class="oi-tag tag-biz">Business</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">12</div>
+    <div>
+      <div class="oi-title">REIT Transition Planning</div>
+      <div class="oi-body">The client's end goal is REIT status. The platform architecture has been designed with this in mind (AWS infrastructure, Yardi as a future property management upgrade, Parallel Markets for accreditation). However, a REIT requires a minimum of 100 shareholders, 75% of assets in real estate, and specific income distribution requirements. This should be tracked and planned with their attorney as the portfolio grows, so the technology transition is not disruptive.</div>
+    </div>
+    <div class="oi-tag tag-biz">Business</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">13</div>
+    <div>
+      <div class="oi-title">Accessibility Compliance (ADA / WCAG 2.1)</div>
+      <div class="oi-body">Financial platforms are increasingly subject to ADA accessibility requirements under WCAG 2.1 AA standards. This is both a legal consideration and good practice. Key requirements include proper contrast ratios, keyboard navigation, screen reader compatibility, and accessible form labeling. An accessibility audit should be part of the Phase 7 QA process.</div>
+    </div>
+    <div class="oi-tag tag-tech">Tech</div>
+  </div>
+
+  <div class="open-item">
+    <div class="oi-num">14</div>
+    <div>
+      <div class="oi-title">Backup, Disaster Recovery & Data Retention Policy</div>
+      <div class="oi-body">AWS RDS provides automated backups, but a formal disaster recovery plan and data retention policy should be documented. How long are investor records kept? What happens to data if an investor closes their account? For a financial platform holding SSNs, EINs, and bank data, this needs to be answered in writing and reflected in the Privacy Policy.</div>
+    </div>
+    <div class="oi-tag tag-tech">Tech</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<div class="doc-footer">
+  <span>Real Estate Investor Platform · Project Architecture Document · v1.0</span>
+  <span class="bl-badge">Blackbox Logic</span>
+</div>
+
+</body>
+</html>
