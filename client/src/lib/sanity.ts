@@ -10,14 +10,32 @@ import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 export const sanityEnabled = Boolean(import.meta.env.VITE_SANITY_PROJECT_ID);
 
-export const sanityClient = createClient({
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID || '',
-  dataset: import.meta.env.VITE_SANITY_DATASET || 'production',
-  apiVersion: '2025-01-01',
-  // CDN is cached and can lag behind edits by a minute or so — fine (and cheaper/faster)
-  // in production, but use the live API in dev so new content shows up immediately.
-  useCdn: import.meta.env.PROD,
-});
+// createClient() throws synchronously if projectId is missing/invalid, and this module
+// is imported at the top of nearly every page — so a missing env var (misconfigured
+// Netlify env, a preview deploy without it set, etc.) would crash the whole app to a
+// white screen before React even mounts, instead of just breaking the Sanity-backed
+// sections. Fall back to a stub client whose fetch() rejects, so each page's existing
+// useQuery error state ("Failed to load...") handles it instead.
+export const sanityClient = sanityEnabled
+  ? createClient({
+      projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+      dataset: import.meta.env.VITE_SANITY_DATASET || 'production',
+      apiVersion: '2025-01-01',
+      // CDN is cached and can lag behind edits by a minute or so — fine (and
+      // cheaper/faster) in production, but use the live API in dev so new content
+      // shows up immediately.
+      useCdn: import.meta.env.PROD,
+    })
+  : ({
+      fetch: () =>
+        Promise.reject(
+          new Error('Sanity is not configured (VITE_SANITY_PROJECT_ID is unset).')
+        ),
+    } as unknown as ReturnType<typeof createClient>);
+
+if (!sanityEnabled) {
+  console.error('VITE_SANITY_PROJECT_ID is unset — Sanity-backed content will fail to load.');
+}
 
 const builder = imageUrlBuilder(sanityClient);
 
